@@ -18,6 +18,7 @@
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
           Roboto, "Helvetica Neue", Arial;
       }
+
       #stars {
         position: fixed;
         top: 0;
@@ -35,6 +36,7 @@
         background: transparent;
         color: #fff;
       }
+
       .wrap {
         min-height: 100vh;
         display: grid;
@@ -61,17 +63,19 @@
         transform-origin: center;
         transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
       }
+
       .card:hover {
         transform: translateY(-8px) scale(1.01);
       }
 
-      /* header  */
+      /* header */
       .head {
         display: flex;
         align-items: center;
         gap: 12px;
         margin-bottom: 14px;
       }
+
       .logo {
         width: 56px;
         height: 56px;
@@ -83,18 +87,22 @@
         font-weight: 700;
         color: #2b0200;
       }
+
       .title {
         line-height: 1;
       }
+
       .title h1 {
         margin: 0;
         font-size: 18px;
       }
+
       .title p {
         margin: 0;
         font-size: 12px;
         opacity: 0.85;
       }
+
       .display {
         background: linear-gradient(
           180deg,
@@ -109,12 +117,15 @@
         margin-bottom: 16px;
         border: 1px solid rgba(255, 255, 255, 0.02);
       }
+
       .expression {
         font-size: 14px;
         opacity: 0.7;
         min-height: 18px;
         word-break: break-all;
+        text-align: right;
       }
+
       .result {
         font-size: 28px;
         font-weight: 700;
@@ -124,11 +135,13 @@
         align-items: center;
         justify-content: flex-end;
       }
+
       .pad {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
       }
+
       .btn {
         border-radius: 10px;
         padding: 14px 10px;
@@ -149,6 +162,7 @@
         font-size: 18px;
         color: var(--accent);
       }
+
       .btn.op {
         color: var(--orange-1);
         font-weight: 700;
@@ -158,12 +172,14 @@
           rgba(255, 122, 24, 0.02)
         );
       }
+
       .btn.eq {
         grid-column: span 2;
         background: linear-gradient(90deg, var(--orange-1), var(--orange-2));
         color: #2b0200;
         box-shadow: 0 12px 30px rgba(255, 122, 24, 0.18);
       }
+
       .btn.clear {
         background: linear-gradient(
           180deg,
@@ -173,6 +189,7 @@
         color: #fff;
         opacity: 0.9;
       }
+
       .btn::after {
         content: "";
         position: absolute;
@@ -188,22 +205,27 @@
           transparent 30%
         );
       }
+
       .btn:hover {
         transform: translateY(-6px) rotateX(7deg);
         filter: brightness(1.04);
       }
+
       .btn:hover::after {
         transform: scale(1);
         opacity: 1;
       }
+
       .btn.op:hover {
         box-shadow: 0 8px 40px rgba(255, 122, 24, 0.25),
           0 0 28px rgba(255, 180, 100, 0.06) inset;
       }
+
       .btn.eq:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 18px 50px rgba(255, 122, 24, 0.28);
       }
+
       .ripple {
         position: absolute;
         border-radius: 50%;
@@ -212,17 +234,20 @@
         opacity: 0.9;
         background: rgba(255, 255, 255, 0.12);
       }
+
       @keyframes ripple {
         to {
           transform: scale(6);
           opacity: 0;
         }
       }
+
       .helpers {
         display: flex;
         gap: 8px;
         margin-bottom: 8px;
       }
+
       .chip {
         background: var(--glass-2);
         padding: 6px 10px;
@@ -231,28 +256,34 @@
         border: 1px solid rgba(255, 255, 255, 0.02);
         opacity: 0.85;
       }
+
       @media (max-width: 420px) {
         .card {
           padding: 18px;
           border-radius: 14px;
         }
+
         .logo {
           width: 48px;
           height: 48px;
         }
+
         .btn {
           padding: 12px;
           font-size: 16px;
         }
+
         .result {
           font-size: 24px;
         }
       }
+
       .constellation-overlay {
         position: absolute;
         inset: 0;
         pointer-events: none;
       }
+
       .foot {
         margin-top: 12px;
         font-size: 12px;
@@ -261,16 +292,19 @@
         justify-content: space-between;
         align-items: center;
       }
+
       .logo .star {
         filter: drop-shadow(0 6px 12px rgba(255, 140, 60, 0.18));
         animation: twinkle 3.4s infinite;
       }
+
       @keyframes twinkle {
         0%,
         100% {
           opacity: 1;
           transform: scale(1);
         }
+
         50% {
           opacity: 0.6;
           transform: scale(0.86);
@@ -278,6 +312,7 @@
       }
     </style>
   </head>
+
   <body>
     <canvas id="stars"></canvas>
     <div class="wrap">
@@ -323,22 +358,18 @@
           <div class="btn" data-key="(">(</div>
           <div class="btn" data-key=")">)</div>
           <div class="btn op" data-key="/">÷</div>
-
           <div class="btn" data-key="7">7</div>
           <div class="btn" data-key="8">8</div>
           <div class="btn" data-key="9">9</div>
           <div class="btn op" data-key="*">×</div>
-
           <div class="btn" data-key="4">4</div>
           <div class="btn" data-key="5">5</div>
           <div class="btn" data-key="6">6</div>
           <div class="btn op" data-key="-">−</div>
-
           <div class="btn" data-key="1">1</div>
           <div class="btn" data-key="2">2</div>
           <div class="btn" data-key="3">3</div>
           <div class="btn op" data-key="+">+</div>
-
           <div class="btn" data-key="0">0</div>
           <div class="btn" data-key=".">.</div>
           <div class="btn" data-key="%">%</div>
@@ -373,7 +404,6 @@
           initStars();
         });
 
-        const num = Math.floor((w * h) / 90000) * 110 + 120; // scale with screen
         const stars = [];
 
         function rand(min, max) {
@@ -398,7 +428,10 @@
           constellation.nodes = idx.map((i) => stars[i]);
         }
 
-        const constellation = { nodes: [], t: 0 };
+        const constellation = {
+          nodes: [],
+          t: 0,
+        };
 
         function draw() {
           ctx.clearRect(0, 0, w, h);
@@ -450,10 +483,8 @@
               ctx.fill();
             }
           }
-
           requestAnimationFrame(draw);
         }
-
         initStars();
         draw();
       })();
@@ -463,7 +494,6 @@
         const expressionEl = document.getElementById("expression");
         const resultEl = document.getElementById("result");
         const pad = document.getElementById("pad");
-
         let expr = "";
 
         function update() {
@@ -500,8 +530,9 @@
           return v;
         }
 
-        function press(key, el) {
-          if (el) createRipple(el);
+        // ✅ LOGIKA FUNGSI PRESS DIPERBAIKI UNTUK MENERIMA 'event'
+        function press(key, el, event) {
+          if (el) createRipple(el, event); // Teruskan 'event' ke createRipple
 
           if (key === "C") {
             expr = "";
@@ -522,7 +553,6 @@
             update();
             return;
           }
-
           expr += key;
           update();
         }
@@ -539,13 +569,15 @@
           }
         }
 
-        function createRipple(el) {
+        // ✅ LOGIKA FUNGSI CREATE RIPPLE DIPERBAIKI (TIDAK LAGI PAKAI window.event)
+        function createRipple(el, event) {
           const circle = document.createElement("span");
           circle.className = "ripple";
           const d = Math.max(el.clientWidth, el.clientHeight);
           circle.style.width = circle.style.height = d + "px";
 
-          if (window.event) {
+          // Gunakan objek 'event' yang diterima dari parameter, bukan 'window.event'
+          if (event) {
             const rect = el.getBoundingClientRect();
             circle.style.left = event.clientX - rect.left - d / 2 + "px";
             circle.style.top = event.clientY - rect.top - d / 2 + "px";
@@ -555,25 +587,18 @@
           circle.addEventListener("animationend", () => circle.remove());
         }
 
+        // ✅ EVENT LISTENER DIPERBAIKI UNTUK MENGIRIM 'e'
         pad.addEventListener("click", (e) => {
           const btn = e.target.closest(".btn");
           if (!btn) return;
           const key = btn.dataset.key;
-          press(key, btn);
+          press(key, btn, e); // Kirim event 'e' ke fungsi press
         });
 
         window.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            press("=", null);
-            e.preventDefault();
-            return;
-          }
-          if (e.key === "Backspace") {
-            press("DEL", null);
-            e.preventDefault();
-            return;
-          }
-          const map = {
+          const keyMap = {
+            Enter: "=",
+            Backspace: "DEL",
             "*": "*",
             "/": "/",
             "+": "+",
@@ -583,8 +608,14 @@
             "%": "%",
             ".": ".",
           };
-          if (/[0-9]/.test(e.key)) press(e.key, null);
-          else if (map[e.key]) press(map[e.key], null);
+          const mappedKey = keyMap[e.key];
+
+          if (/[0-9]/.test(e.key)) {
+            press(e.key, null, e);
+          } else if (mappedKey) {
+            press(mappedKey, null, e);
+            e.preventDefault();
+          }
         });
 
         update();
